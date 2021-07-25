@@ -3,14 +3,14 @@ const UserSchema = new Schema ({
     userName: {
         type: String,
         unique: true,
-        required: true,
+        required: 'Username is required',
         trim: true
     },
     email: {
         type: String,
-        required: true,
+        required: 'Email is required',
         unique: true,
-        //Match a vailid email address
+        match: [/.+\@.+\..+/]
     },
     thoughts: [
         {
