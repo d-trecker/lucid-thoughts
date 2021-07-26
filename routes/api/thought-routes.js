@@ -18,6 +18,7 @@ router.route('/:id').put(updateThought);
 //Delete thought at: /api/thoughts/<userId>/<thoughtId>
 router.route('/:id').delete(removeThought);
 
+//Add reaction at: /api/thoughts/<thoughtId>/reactions
 router.route('/:thoughtId/reactions').post(addReaction);
 
 //Delete reaction at: /api/thoughts/<thoughtId>/reactions/<reactionId>
