@@ -2,6 +2,32 @@ const { User, Thought } = require("../models");
 const { db } = require("../models/User");
 
 const thoughtController = {
+  //get all thoughts
+  getAllThought(req, res) {
+    Thought.find({})
+      .then((dbUserData) => res.json(dbUserData))
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  },
+
+  // get one thought by id
+  getThoughtById({ params }, res) {
+    Thought.findOne({ _id: params.id })
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res.status(404).json({ message: "No thought found with this id!" });
+          return;
+        }
+        res.json(dbUserData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  },
+
   //add thought to user
   addThought({ params, body }, res) {
     console.log(body);
